@@ -27,11 +27,12 @@ ISR(TIMER0_COMPA_vect) {
         printf("%i:%i:%i\r\n", hours, minutes, seconds);
 	}
 	if(seconds==59){
+        TCCR0B = 0;
 		minutes++;
 		seconds = 0;
         printf("%i:%i:%i\r\n", hours, minutes, seconds);
 	}
-	if(minutes==59){
+	if(minutes>59){
 		hours++;
 		minutes = 0;
 	}
